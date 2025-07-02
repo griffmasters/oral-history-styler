@@ -18,7 +18,7 @@ def transcribe(rawCSV):
     next(csvreader) #assume first line is just headers and ignore
     timestampInterval = timedelta(minutes=timestampIntervalMinutes)
     nextTimestampMinute = timestampInterval
-    speaker_name = re.compile("[A-Z, ]+:")
+    speaker_name = re.compile("[A-Z, ,-]+:")
 
 
     for row in csvreader:
@@ -108,7 +108,7 @@ def add_begining(doc):
     current_run = intro_paragraph.add_run(" Interview Location")
     current_run.font.highlight_color = WD_COLOR_INDEX.YELLOW
 
-    current_run = intro_paragraph.add_run(". The interview was conducted in-person. This interview is part of the "
+    current_run = intro_paragraph.add_run(". The interview was conducted in-person. This interview is part of "
                                       "The National Native American Boarding School Healing Coalition’s Oral History Project.\n\n")
 
     current_run = intro_paragraph.add_run("Interviewee Name and Interviewer Name")
